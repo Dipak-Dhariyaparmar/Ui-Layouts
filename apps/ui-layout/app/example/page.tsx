@@ -1,4 +1,4 @@
-//This is examples related component
+//This is examples related components
 
 import MobileIcons from '@/registry/components/liquid-glass/mobile-icons-liquid';
 import NotificationLiquid from '@/registry/components/liquid-glass/notification';
