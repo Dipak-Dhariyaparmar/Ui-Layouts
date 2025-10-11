@@ -1,0 +1,159 @@
+export const metadata = {
+  metadataBase: new URL("https://ui-layouts.com"),
+
+  title: "Background Blocks",
+  description: "A fully customizable grid component with active blocks for creating interactive layouts and dynamic backgrounds. Features responsive grid systems, hover effects, and customizable block animations. Perfect for modern web interfaces and engaging user experiences.",
+  keywords: [
+    "Background blocks component",
+    "Interactive grid system",
+    "Customizable grid blocks",
+    "Active blocks animation",
+    "React grid component",
+    "Dynamic background grid",
+    "Interactive layout blocks",
+    "Hover effect blocks",
+    "Responsive grid system",
+    "Animated grid blocks",
+    "UI grid component",
+    "Block-based layout",
+    "Interactive background",
+    "Grid animation effects",
+    "Customizable blocks",
+    "Modern grid design",
+    "Block hover effects",
+    "Dynamic grid layout",
+    "Interactive UI blocks",
+    "Tailwind CSS grid"
+  ],
+  authors: [{ name: "Naymur Rahman", url: "https://twitter.com/naymur_dev" }],
+  creator: "@naymur_dev",
+  publisher: "UI Layouts",
+  openGraph: {
+    title: "Background Blocks Component | UI Layouts",
+    description: "A fully customizable grid component with active blocks for creating interactive layouts and dynamic backgrounds with hover effects and animations.",
+    siteName: "UI Layouts",
+    url: "https://ui-layouts.com/components/blocks",
+    images: [
+      {
+        url: 'https://ui-layouts.com/component-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'UI Layouts Components',
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Background Blocks | UI Layouts",
+    description: "A fully customizable grid component with active blocks for creating interactive layouts and dynamic backgrounds.",
+    images: ['https://ui-layouts.com/component-og.jpg'],
+    creator: "@naymur_dev",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  category: "technology",
+};
+
+<ComponentCodePreview name='bg-blocks-one' hasReTrigger isFitheight />
+
+## Installation
+
+```bash
+npm install motion
+```
+
+```tsx beam.tsx
+import { cn } from '@/lib/utils';
+import React, { useEffect, useState } from 'react';
+
+function Blocks({
+  activeDivs,
+  divClass,
+  classname,
+  activeDivsClass,
+  containerRef,
+}: {
+  activeDivsClass?: string;
+  activeDivs?: any;
+  divClass?: string;
+  classname?: string;
+  containerRef: React.RefObject<HTMLDivElement>;
+}) {
+  const [blocks, setBlocks] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    const updateBlocks = () => {
+      const container = containerRef.current;
+      if (container) {
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+        const blockSize = containerWidth * 0.06; // Using 6% of section width for the block size
+
+        const columns = Math.floor(containerWidth / blockSize);
+        const rows = Math.floor(containerHeight / blockSize);
+
+        const newBlocks = Array.from({ length: columns }, (_, columnIndex) => (
+          <div key={columnIndex} className='w-[6vw] h-full'>
+            {Array.from({ length: rows }, (_, rowIndex) => (
+              <div
+                key={rowIndex}
+                className={cn(
+                  `h-[6vh] w-full border-[1px] border-[#5dcece09] ${
+                    // @ts-ignore
+                    activeDivs[columnIndex]?.has(rowIndex)
+                      ? `${activeDivsClass}`
+                      : ''
+                  }`,
+                  divClass
+                )}
+                style={{ height: `${blockSize}px` }}
+              ></div>
+            ))}
+          </div>
+        ));
+
+        setBlocks(newBlocks);
+      }
+    };
+
+    updateBlocks();
+    window.addEventListener('resize', updateBlocks);
+
+    return () => window.removeEventListener('resize', updateBlocks);
+  }, [activeDivs, activeDivsClass, divClass, containerRef]);
+
+  return (
+    <div
+      className={cn(
+        'flex h-full overflow-hidden top-0 -inset-0 left-0 absolute',
+        classname
+      )}
+    >
+      {blocks}
+    </div>
+  );
+}
+
+export default Blocks;
+```
+
+## Props
+
+| Prop            | Type                    | Default   | Description                                                                                          |
+| --------------- | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| activeDivsClass | string                  | undefined | The class name applied to active blocks.                                                             |
+| activeDivs      | Object with number keys | undefined | A mapping where each key is a column index and each value is a set of row indices for active blocks. |
+| divClass        | string                  | undefined | The class name applied to each block.                                                                |
+| classname       | string                  | undefined | Additional class name applied to the outer container.                                                |
+| containerRef    | React.RefObject         | undefined | A React ref object for the container element used to calculate dimensions.                           |
