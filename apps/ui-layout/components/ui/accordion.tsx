@@ -1,4 +1,4 @@
-//This is a accordion screen related components
+//This is an accordion screen related component
 
 "use client"
 import React, { ReactNode, ReactElement, isValidElement } from 'react';
