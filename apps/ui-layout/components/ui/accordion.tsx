@@ -1,3 +1,5 @@
+//This is a accordion screen related components
+
 "use client"
 import React, { ReactNode, ReactElement, isValidElement } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
