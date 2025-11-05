@@ -1,4 +1,4 @@
-//This component is related to preview tab
+//This component is related to preview tabs
 
 'use client';
 import React, { useState } from 'react';
