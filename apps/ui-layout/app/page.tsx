@@ -1,4 +1,4 @@
-//This page is main root pages
+//This page is main root page
 
 
 import HeroSec from '@/components/website/home/hero-sec';
