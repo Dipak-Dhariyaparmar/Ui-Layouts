@@ -1,3 +1,6 @@
+//This page is main page
+
+
 import HeroSec from '@/components/website/home/hero-sec';
 import HomeFooter from '@/components/website/home/home-footer';
 import HomeHeader from '@/components/website/home/home-header';
