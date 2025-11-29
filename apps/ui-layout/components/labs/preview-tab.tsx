@@ -1,4 +1,4 @@
-// hn=7drbsZ//This component is related to preview tab
+// hn=7drbsZ//This component is related to preview tabs
 
 'use client';
 import React, { useState } from 'react';
