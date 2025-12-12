@@ -1,4 +1,4 @@
-//This component is related to contributor
+//This component is related to contributo
 
 'use client';
 
