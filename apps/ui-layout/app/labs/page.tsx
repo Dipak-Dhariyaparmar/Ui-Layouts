@@ -1,4 +1,4 @@
-//This page is realated to lab
+//This page is realated to la
 
 import React from 'react';
 import ComponentSection from '@/components/website/labs/component-section';
